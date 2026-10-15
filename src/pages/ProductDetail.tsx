@@ -431,7 +431,7 @@ export function ProductDetail() {
       {/* Barra fixa de compra — mobile */}
       <div
         className={cn(
-          'fixed inset-x-0 bottom-16 z-[58] border-t border-line glass px-4 py-3 transition-transform duration-300 lg:hidden',
+          'fixed inset-x-0 bottom-16 z-[58] border-t border-line glass px-4 pb-4 pt-3 transition-transform duration-300 lg:hidden',
           showSticky ? 'translate-y-0' : 'translate-y-[130%]',
         )}
       >

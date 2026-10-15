@@ -66,7 +66,7 @@ export function SearchOverlay() {
             type="button"
             onClick={() => toggleSearch(false)}
             aria-label="Fechar busca"
-            className="grid h-9 w-9 shrink-0 cursor-pointer place-items-center rounded-full text-cream hover:bg-white/5"
+            className="grid h-11 w-11 shrink-0 cursor-pointer place-items-center rounded-full text-cream hover:bg-white/5"
           >
             <X size={20} />
           </button>
@@ -83,7 +83,7 @@ export function SearchOverlay() {
                       key={term}
                       type="button"
                       onClick={() => submit(term)}
-                      className="cursor-pointer rounded-full border border-line px-3.5 py-2 text-xs text-cream/90 transition-colors hover:border-gold-500 hover:text-gold-300"
+                      className="cursor-pointer rounded-full border border-line px-4 py-2.5 text-sm text-cream/90 transition-colors hover:border-gold-500 hover:text-gold-300"
                     >
                       {term}
                     </button>

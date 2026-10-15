@@ -121,9 +121,9 @@ export function CartDrawer() {
                         type="button"
                         onClick={() => removeItem(line.key)}
                         aria-label={`Remover ${line.product.name}`}
-                        className="grid h-7 w-7 shrink-0 cursor-pointer place-items-center rounded-full text-muted hover:bg-white/5 hover:text-[#e0796a]"
+                        className="grid h-10 w-10 shrink-0 cursor-pointer place-items-center rounded-full text-muted hover:bg-white/5 hover:text-[#e0796a]"
                       >
-                        <Trash2 size={15} />
+                        <Trash2 size={16} />
                       </button>
                     </div>
 
@@ -137,18 +137,18 @@ export function CartDrawer() {
                           type="button"
                           onClick={() => setQty(line.key, line.qty - 1)}
                           aria-label="Diminuir quantidade"
-                          className="grid h-8 w-8 cursor-pointer place-items-center rounded-full text-cream hover:text-gold-300"
+                          className="grid h-10 w-10 cursor-pointer place-items-center rounded-full text-cream hover:text-gold-300"
                         >
-                          <Minus size={13} />
+                          <Minus size={14} />
                         </button>
                         <span className="w-6 text-center text-sm tabular-nums">{line.qty}</span>
                         <button
                           type="button"
                           onClick={() => setQty(line.key, line.qty + 1)}
                           aria-label="Aumentar quantidade"
-                          className="grid h-8 w-8 cursor-pointer place-items-center rounded-full text-cream hover:text-gold-300"
+                          className="grid h-10 w-10 cursor-pointer place-items-center rounded-full text-cream hover:text-gold-300"
                         >
-                          <Plus size={13} />
+                          <Plus size={14} />
                         </button>
                       </div>
                       <span className="text-sm font-semibold text-cream">{formatBRL(line.total)}</span>

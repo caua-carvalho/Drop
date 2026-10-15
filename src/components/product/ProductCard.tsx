@@ -63,7 +63,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
           onClick={() => toggleFavorite(product.id)}
           aria-label={isFav ? `Remover ${product.name} dos favoritos` : `Salvar ${product.name} nos favoritos`}
           aria-pressed={isFav}
-          className="absolute right-2 top-2 grid h-9 w-9 cursor-pointer place-items-center rounded-full bg-ink-950/70 text-cream backdrop-blur transition-colors hover:bg-ink-950 hover:text-gold-300"
+          className="absolute right-2 top-2 grid h-11 w-11 cursor-pointer place-items-center rounded-full bg-ink-950/70 text-cream backdrop-blur transition-colors hover:bg-ink-950 hover:text-gold-300"
         >
           <Heart size={16} className={cn(isFav && 'fill-gold-500 text-gold-500')} />
         </button>
@@ -71,7 +71,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
         <button
           type="button"
           onClick={handleQuickAdd}
-          className="absolute inset-x-2 bottom-2 flex h-10 translate-y-3 cursor-pointer items-center justify-center gap-2 rounded-lg bg-gold-500 px-3 text-[11px] font-bold uppercase tracking-[0.12em] text-ink-950 opacity-0 transition-all duration-300 hover:bg-gold-400 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100 max-md:translate-y-0 max-md:opacity-100 max-md:bg-gold-500 max-md:text-ink-950"
+          className="absolute inset-x-2 bottom-2 flex h-11 translate-y-3 cursor-pointer items-center justify-center gap-2 rounded-lg bg-gold-500 px-3 text-[11px] font-bold uppercase tracking-[0.12em] text-ink-950 opacity-0 transition-all duration-300 hover:bg-gold-400 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100 max-md:translate-y-0 max-md:opacity-100 max-md:bg-gold-500 max-md:text-ink-950"
         >
           <Plus size={14} /> Adicionar
         </button>

@@ -279,7 +279,7 @@ export function Catalog() {
             <select
               value={sort}
               onChange={(e) => setParam('ordenar', e.target.value === 'destaques' ? null : e.target.value)}
-              className="h-11 cursor-pointer appearance-none rounded-full border border-line bg-ink-900 pl-4 pr-9 text-xs text-cream focus:border-gold-500 focus:outline-none"
+              className="h-11 cursor-pointer appearance-none rounded-full border border-line bg-ink-900 pl-4 pr-9 text-base sm:text-sm text-cream focus:border-gold-500 focus:outline-none"
             >
               {SORTS.map((s) => (
                 <option key={s.key} value={s.key}>

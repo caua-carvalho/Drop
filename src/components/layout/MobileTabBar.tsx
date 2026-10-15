@@ -13,7 +13,7 @@ export function MobileTabBar() {
 
   const count = cartCount(items);
   const linkBase =
-    'relative flex flex-1 cursor-pointer flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium transition-colors';
+    'relative flex flex-1 cursor-pointer flex-col items-center justify-center gap-0.5 py-2 text-[11px] font-medium transition-colors min-h-[56px]';
 
   return (
     <nav
@@ -50,7 +50,7 @@ export function MobileTabBar() {
             <span className="relative">
               <Heart size={20} />
               {favCount > 0 && (
-                <span className="absolute -right-2.5 -top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-gold-500 px-1 text-[9px] font-bold text-ink-950">
+                <span className="absolute -right-2.5 -top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-gold-500 px-1 text-[10px] font-bold text-ink-950">
                   {favCount}
                 </span>
               )}
@@ -63,7 +63,7 @@ export function MobileTabBar() {
             <span className="relative">
               <ShoppingBag size={20} />
               {count > 0 && (
-                <span className="absolute -right-2.5 -top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-gold-500 px-1 text-[9px] font-bold text-ink-950">
+                <span className="absolute -right-2.5 -top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-gold-500 px-1 text-[10px] font-bold text-ink-950">
                   {count}
                 </span>
               )}

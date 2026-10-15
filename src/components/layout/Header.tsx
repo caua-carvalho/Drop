@@ -54,7 +54,7 @@ export function Header() {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Abrir menu"
               aria-expanded={menuOpen}
-              className="grid h-10 w-10 cursor-pointer place-items-center rounded-full text-cream hover:bg-white/5"
+              className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-cream hover:bg-white/5"
             >
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -99,14 +99,14 @@ export function Header() {
               type="button"
               onClick={() => toggleSearch(true)}
               aria-label="Buscar produtos"
-              className="grid h-10 w-10 cursor-pointer place-items-center rounded-full text-cream hover:bg-white/5 hover:text-gold-300"
+              className="grid h-11 w-11 cursor-pointer place-items-center rounded-full text-cream hover:bg-white/5 hover:text-gold-300"
             >
               <Search size={20} />
             </button>
             <Link
               to="/favoritos"
               aria-label={`Favoritos${favCount ? ` (${favCount})` : ''}`}
-              className="relative hidden h-10 w-10 place-items-center rounded-full text-cream hover:bg-white/5 hover:text-gold-300 sm:grid"
+              className="relative hidden h-11 w-11 place-items-center rounded-full text-cream hover:bg-white/5 hover:text-gold-300 sm:grid"
             >
               <Heart size={20} />
               {favCount > 0 && (
@@ -119,7 +119,7 @@ export function Header() {
               type="button"
               onClick={openCart}
               aria-label={`Abrir carrinho${count ? ` (${count} itens)` : ''}`}
-              className="relative grid h-10 w-10 cursor-pointer place-items-center rounded-full text-cream hover:bg-white/5 hover:text-gold-300"
+              className="relative grid h-11 w-11 cursor-pointer place-items-center rounded-full text-cream hover:bg-white/5 hover:text-gold-300"
             >
               <ShoppingBag size={20} />
               {count > 0 && (
