@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+
+    <title>Drop Multimarcas — Roupas e Acessórios | Nacionais e Importados</title>
+    <meta
+      name="description"
+      content="Drop Multimarcas — loja física em Caçapava/SP com roupas e acessórios nacionais e importados. Enviamos para todo o Brasil. Compre pelo site ou pelo WhatsApp."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Drop Multimarcas — Roupas e Acessórios" />
+    <meta
+      property="og:description"
+      content="Nacionais e importados, direto da loja física em Caçapava/SP. Enviamos para todo o Brasil."
+    />
+    <meta property="og:image" content="/brand/icon-512.png" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <link rel="icon" type="image/png" href="/brand/icon-192.png" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+
+    <link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      // Precarrega a imagem de hero apenas na Home (LCP), evitando desperdício nas demais rotas.
+      if (location.pathname === '/' || location.pathname === '') {
+        var l = document.createElement('link');
+        l.rel = 'preload';
+        l.as = 'image';
+        l.href = '/brand/hero-apparel.webp';
+        l.setAttribute('fetchpriority', 'high');
+        document.head.appendChild(l);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
