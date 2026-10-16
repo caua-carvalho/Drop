@@ -1,7 +1,7 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ChevronRight, PackageOpen, SlidersHorizontal, X } from 'lucide-react';
-import { CATEGORIES, COLORS, PRODUCTS, SIZES, type Product } from '../data/products';
+import { BRANDS, CATEGORIES, COLORS, PRODUCTS, SIZES, brandNameBySlug, brandSlug, type Product } from '../data/products';
 import { cn, formatBRL } from '../lib/format';
 import { ProductCard } from '../components/product/ProductCard';
 import { Button, buttonClasses } from '../components/ui/Button';
@@ -19,7 +19,7 @@ const SORTS: { key: SortKey; label: string }[] = [
 ];
 
 const PRICE_MIN = 0;
-const PRICE_MAX = 400;
+const PRICE_MAX = 500;
 
 function sortProducts(list: Product[], sort: SortKey): Product[] {
   const copy = [...list];
@@ -53,6 +53,7 @@ function FilterPanel({
   const cats = params.getAll('categoria');
   const sizes = params.getAll('tamanho');
   const colors = params.getAll('cor');
+  const marcas = params.getAll('marca');
   const maxPrice = Number(params.get('maxPreco') ?? PRICE_MAX);
   const onlyPromo = params.get('promo') === '1';
 
@@ -73,6 +74,28 @@ function FilterPanel({
                 )}
               >
                 {cat.label}
+                {active && <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />}
+              </button>
+            );
+          })}
+        </div>
+      </FilterGroup>
+
+      <FilterGroup title="Marca">
+        <div className="flex flex-col gap-1">
+          {BRANDS.map((brand) => {
+            const active = marcas.includes(brand.slug);
+            return (
+              <button
+                key={brand.slug}
+                type="button"
+                onClick={() => toggleMulti('marca', brand.slug)}
+                className={cn(
+                  'flex cursor-pointer items-center justify-between rounded-lg px-2.5 py-2 text-sm transition-colors',
+                  active ? 'bg-gold-500/10 text-gold-300' : 'text-cream/80 hover:bg-white/5',
+                )}
+              >
+                {brand.name}
                 {active && <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />}
               </button>
             );
@@ -208,6 +231,7 @@ export function Catalog() {
   const cats = params.getAll('categoria');
   const sizes = params.getAll('tamanho');
   const colors = params.getAll('cor');
+  const marcas = params.getAll('marca');
   const maxPrice = Number(params.get('maxPreco') ?? PRICE_MAX);
   const onlyPromo = params.get('promo') === '1';
   const busca = params.get('busca') ?? '';
@@ -217,6 +241,7 @@ export function Catalog() {
     const q = busca.trim().toLowerCase();
     const filtered = PRODUCTS.filter((p) => {
       if (cats.length && !cats.includes(p.category)) return false;
+      if (marcas.length && !marcas.includes(brandSlug(p.brand))) return false;
       if (sizes.length && !p.sizes.some((s) => sizes.includes(s))) return false;
       if (colors.length && !p.colors.some((c) => colors.includes(c.name))) return false;
       if (p.price > maxPrice) return false;
@@ -225,17 +250,23 @@ export function Catalog() {
       return true;
     });
     return sortProducts(filtered, sort);
-  }, [cats, sizes, colors, maxPrice, onlyPromo, busca, sort]);
+  }, [cats, marcas, sizes, colors, maxPrice, onlyPromo, busca, sort]);
 
   const activeChips: { key: string; value: string; label: string }[] = [
     ...cats.map((c) => ({ key: 'categoria', value: c, label: CATEGORIES.find((x) => x.id === c)?.label ?? c })),
+    ...marcas.map((m) => ({ key: 'marca', value: m, label: brandNameBySlug(m) ?? m })),
     ...sizes.map((s) => ({ key: 'tamanho', value: s, label: `Tam. ${s}` })),
     ...colors.map((c) => ({ key: 'cor', value: c, label: c })),
     ...(onlyPromo ? [{ key: 'promo', value: '1', label: 'Promoções' }] : []),
     ...(maxPrice < PRICE_MAX ? [{ key: 'maxPreco', value: String(maxPrice), label: `Até ${formatBRL(maxPrice)}` }] : []),
   ];
 
-  const title = cats.length === 1 ? CATEGORIES.find((c) => c.id === cats[0])?.label ?? 'Loja' : 'Loja';
+  const title =
+    cats.length === 1
+      ? CATEGORIES.find((c) => c.id === cats[0])?.label ?? 'Loja'
+      : marcas.length === 1
+        ? brandNameBySlug(marcas[0]) ?? 'Loja'
+        : 'Loja';
   const hasFilters = activeChips.length > 0;
 
   return (

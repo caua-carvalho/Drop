@@ -184,6 +184,25 @@
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
   }
+
+  /* Altura do hero da home: viewport menos o header (h-16/h-20 + 1px de borda)
+     e, no mobile, menos a barra fixa inferior (3.5rem + 1px) + safe area.
+     Garante que o banner termine dentro da área visível sem ultrapassar a tela.
+     min-height é limitado ao espaço disponível para nunca forçar overflow. */
+  .hero-viewport {
+    --hero-avail: calc(100svh - 7.5rem - 2px - env(safe-area-inset-bottom, 0px));
+    height: var(--hero-avail);
+    min-height: min(320px, var(--hero-avail));
+    max-height: 560px;
+  }
+  @media (min-width: 1024px) {
+    .hero-viewport {
+      --hero-avail: calc(100svh - 5rem - 1px);
+      height: var(--hero-avail);
+      min-height: min(360px, var(--hero-avail));
+      max-height: 640px;
+    }
+  }
 }
 
 /* Animações de entrada por scroll ---------------------------------- */

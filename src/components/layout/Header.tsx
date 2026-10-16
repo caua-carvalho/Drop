@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Heart, Menu, Search, ShoppingBag, X } from 'lucide-react';
 import { STORE } from '../../config';
 import { cn } from '../../lib/format';
 import { cartCount, useCartStore, useFavoritesStore, useUIStore } from '../../store/shop';
 import { CATEGORIES } from '../../data/products';
 
+/** Navegação por categoria direta — o cliente chega ao produto em 1 clique. */
 const NAV = [
-  { label: 'Início', to: '/' },
   { label: 'Loja', to: '/loja' },
-  { label: 'Looks', to: '/loja?categoria=looks' },
+  { label: 'Camisetas', to: '/loja?categoria=camisetas' },
+  { label: 'Conjuntos', to: '/loja?categoria=conjuntos' },
+  { label: 'Calçados', to: '/loja?categoria=calcados' },
   { label: 'Feminino', to: '/loja?categoria=feminino' },
-  { label: 'Acessórios', to: '/loja?categoria=acessorios' },
+  { label: 'Acessórios', to: '/loja?categoria=acessorios', xlOnly: true },
+  { label: 'Calças', to: '/loja?categoria=calcas', xlOnly: true },
   { label: 'Sobre', to: '/sobre' },
 ];
 
@@ -76,22 +79,23 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegação principal">
-            {NAV.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.to === '/'}
-                className={({ isActive }) =>
-                  cn(
-                    'relative text-xs font-bold uppercase tracking-[0.18em] transition-colors',
-                    isActive ? 'text-gold-400' : 'text-cream/90 hover:text-gold-300',
-                  )
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-8" aria-label="Navegação principal">
+            {NAV.map((item) => {
+              const active = `${location.pathname}${location.search}` === item.to;
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={cn(
+                    'relative whitespace-nowrap text-xs font-bold uppercase tracking-[0.14em] transition-colors xl:tracking-[0.18em]',
+                    item.xlOnly && 'hidden xl:inline',
+                    active ? 'text-gold-400' : 'text-cream/90 hover:text-gold-300',
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-1">
@@ -158,7 +162,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
         )}
       >
         <ul className="flex flex-col">
-          {NAV.map((item) => (
+          {NAV.filter((item) => !item.to.includes('?categoria=')).map((item) => (
             <li key={item.to}>
               <Link
                 to={item.to}

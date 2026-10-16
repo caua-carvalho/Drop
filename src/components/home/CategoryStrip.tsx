@@ -6,16 +6,15 @@ import { Reveal } from '../ui/Reveal';
 
 export function CategoryStrip() {
   return (
-    <section className="container-x py-14 lg:py-20" aria-label="Categorias">
+    <section className="container-x cv-auto py-10 lg:py-12" aria-label="Categorias">
       <SectionHeading
         eyebrow="Explore por categoria"
         title="Encontre seu próximo look"
-        description="Do básico ao importado — navegue pelas categorias que mais saem da loja."
       />
 
-      <div className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 no-scrollbar lg:mt-10 lg:grid lg:grid-cols-4 lg:gap-4 lg:overflow-visible xl:grid-cols-7">
+      <div className="mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 no-scrollbar lg:mt-8 lg:grid lg:grid-cols-5 lg:gap-4 lg:overflow-visible">
         {CATEGORIES.map((cat, i) => (
-          <Reveal key={cat.id} delay={i * 60} className="w-[42%] shrink-0 snap-start sm:w-[30%] lg:w-auto">
+          <Reveal key={cat.id} delay={i * 40} className="w-[42%] shrink-0 snap-start sm:w-[26%] lg:w-auto">
             <Link
               to={`/loja?categoria=${cat.id}`}
               className="group relative block aspect-[3/4] overflow-hidden rounded-2xl border border-line"

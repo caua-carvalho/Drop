@@ -5,6 +5,9 @@ import { STORE, whatsappLink } from '../config';
 import { buttonClasses } from '../components/ui/Button';
 import { Reveal } from '../components/ui/Reveal';
 import { SectionHeading } from '../components/ui/SectionHeading';
+import { EditorialBand } from '../components/home/EditorialBand';
+import { Benefits } from '../components/home/Benefits';
+import { NewsletterCta } from '../components/home/NewsletterCta';
 
 const VALUES = [
   {
@@ -183,6 +186,10 @@ export function About() {
           </div>
         </div>
       </section>
+
+      <EditorialBand />
+      <Benefits />
+      <NewsletterCta />
     </div>
   );
 }
