@@ -1,7 +1,8 @@
 import { InstagramIcon } from '../ui/icons';
 import { STORE } from '../../config';
 
-const FEED = ['/feed/ig01.webp', '/feed/ig09.webp', '/feed/ig17.webp', '/feed/ig25.webp'];
+// Fotos reais extraídas do feed do @dropmultimarcas.
+const FEED = ['/feed/ig04.webp', '/feed/ig10.webp', '/feed/ig16.webp', '/feed/ig22.webp'];
 
 /** Faixa compacta de Instagram no fim da home (sem tomar espaço do catálogo). */
 export function InstagramStrip() {

@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react';
 import { BannerSlider } from '../components/home/BannerSlider';
 import { BrandStrip } from '../components/home/BrandStrip';
 import { CategoryStrip } from '../components/home/CategoryStrip';
 import { ProductGridSection } from '../components/home/ProductGridSection';
 import { InstagramStrip } from '../components/home/InstagramStrip';
 import { PRODUCTS } from '../data/products';
+import { GridSkeleton, Skeleton } from '../components/ui/Skeleton';
 
 /** Ordena por vendas (avaliação + nº de reviews). */
 const byBestSellers = [...PRODUCTS].sort((a, b) => b.reviews * b.rating - a.reviews * a.rating);
@@ -18,6 +20,33 @@ const calcados = PRODUCTS.filter((p) => p.category === 'calcados');
 const acessorios = PRODUCTS.filter((p) => p.category === 'acessorios');
 
 export function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setIsLoading(false), 180);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <>
+        <Skeleton className="h-[calc(100svh-7.5rem-env(safe-area-inset-bottom,0px))] min-h-[320px] max-h-[560px] w-full lg:h-[calc(100svh-5rem)] lg:max-h-[640px]" />
+        <div className="container-x py-12 lg:py-16">
+          <GridSkeleton count={4} />
+        </div>
+        <div className="container-x">
+          <GridSkeleton count={4} />
+        </div>
+        <div className="container-x py-10 lg:py-14">
+          <GridSkeleton count={8} />
+        </div>
+        <div className="container-x py-10 lg:py-14">
+          <GridSkeleton count={8} />
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <BannerSlider />

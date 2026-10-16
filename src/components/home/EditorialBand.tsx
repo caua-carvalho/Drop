@@ -54,7 +54,7 @@ export function EditorialBand() {
           <div className="relative">
             <div className="overflow-hidden rounded-2xl border border-line">
               <img
-                src="/brand/hero-rack.webp"
+                src="/feed/ig15.webp"
                 alt="Arara de roupas da loja Drop Multimarcas"
                 loading="lazy"
                 className="aspect-[4/3] w-full object-cover lg:aspect-[5/6]"

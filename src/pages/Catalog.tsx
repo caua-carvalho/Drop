@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ChevronRight, PackageOpen, SlidersHorizontal, X } from 'lucide-react';
 import { BRANDS, CATEGORIES, COLORS, PRODUCTS, SIZES, brandNameBySlug, brandSlug, type Product } from '../data/products';
@@ -7,6 +7,7 @@ import { ProductCard } from '../components/product/ProductCard';
 import { Button, buttonClasses } from '../components/ui/Button';
 import { Reveal } from '../components/ui/Reveal';
 import { useEscape, useLockBodyScroll } from '../hooks/useOverlay';
+import { GridSkeleton } from '../components/ui/Skeleton';
 
 type SortKey = 'destaques' | 'novidades' | 'preco-asc' | 'preco-desc' | 'avaliacao';
 
@@ -201,9 +202,16 @@ function FilterGroup({ title, children }: { title: string; children: ReactNode }
 export function Catalog() {
   const [params, setParams] = useSearchParams();
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useLockBodyScroll(sheetOpen);
   useEscape(sheetOpen, () => setSheetOpen(false));
+
+  useEffect(() => {
+    setIsLoading(true);
+    const id = window.setTimeout(() => setIsLoading(false), 180);
+    return () => window.clearTimeout(id);
+  }, [params.toString()]);
 
   const setParam = (key: string, value: string | null) => {
     const next = new URLSearchParams(params);
@@ -379,6 +387,8 @@ export function Catalog() {
                 Limpar filtros
               </button>
             </div>
+          ) : isLoading ? (
+            <GridSkeleton count={12} />
           ) : (
             <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3 lg:gap-x-5 xl:grid-cols-4">
               {results.map((product, i) => (

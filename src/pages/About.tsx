@@ -32,7 +32,7 @@ export function About() {
     <div>
       <section className="relative isolate overflow-hidden border-b border-line">
         <div className="absolute inset-0 -z-10">
-          <img src="/brand/hero-store.webp" alt="" className="h-full w-full object-cover opacity-45" />
+          <img src="/feed/ig16.webp" alt="" className="h-full w-full object-cover opacity-45" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/80 to-ink-950/60" />
         </div>
         <div className="container-x py-20 lg:py-28">
@@ -66,7 +66,7 @@ export function About() {
         <div className="mt-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <img
-              src="/brand/hero-rack.webp"
+              src="/feed/ig19.webp"
               alt="Interior da loja Drop Multimarcas"
               loading="lazy"
               className="aspect-[4/3] w-full rounded-2xl border border-line object-cover"

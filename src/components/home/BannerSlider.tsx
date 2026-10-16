@@ -16,7 +16,7 @@ type Slide = {
 
 const SLIDES: Slide[] = [
   {
-    image: '/brand/hero-apparel.webp',
+    image: '/feed/ig01.webp',
     eyebrow: 'Nova estação',
     title: 'A coleção chegou',
     text: 'Camisetas, moletons e conjuntos nacionais e importados — curadoria peça por peça.',
@@ -25,7 +25,7 @@ const SLIDES: Slide[] = [
     position: 'object-center',
   },
   {
-    image: '/products/look-cap.webp',
+    image: '/feed/ig02.webp',
     eyebrow: 'Combinação pronta',
     title: 'Looks completos',
     text: 'Monte o visual inteiro sem esforço — a gente já selecionou as peças que conversam entre si.',
@@ -34,7 +34,7 @@ const SLIDES: Slide[] = [
     position: 'object-center',
   },
   {
-    image: '/feed/ig05.webp',
+    image: '/feed/ig03.webp',
     eyebrow: 'Só por hoje',
     title: 'Promoções da semana',
     text: 'Peças selecionadas com desconto de até 50%. Enquanto durar o estoque.',

@@ -9,7 +9,7 @@ export function CategoryStrip() {
     <section className="container-x cv-auto py-10 lg:py-12" aria-label="Categorias">
       <SectionHeading
         eyebrow="Explore por categoria"
-        title="Encontre seu próximo look"
+        title="Encontre seu próximo Kit"
       />
 
       <div className="mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 no-scrollbar lg:mt-8 lg:grid lg:grid-cols-5 lg:gap-4 lg:overflow-visible">
